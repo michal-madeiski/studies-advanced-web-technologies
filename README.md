@@ -5,4 +5,4 @@ Each lab class dir contains an implementation of tasks about the given topic.
 
 * Lab01 - 
 
-_Lab[number] is a one-week homework assignment._
+_Lab[number] is a one-week homework assignment done in a team of 2 students._
