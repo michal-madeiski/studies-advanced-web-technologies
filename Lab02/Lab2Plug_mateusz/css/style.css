@@ -1,0 +1,8 @@
+.mp-announcement {
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px;
+    font-size: 15px;
+    position: relative;
+}
