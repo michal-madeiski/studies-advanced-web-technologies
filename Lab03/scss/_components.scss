@@ -1,0 +1,119 @@
+.navbar {
+  background-color: white;
+  padding: $base-spacing 0;
+  @include box-shadow(10px);
+
+  ul {
+    @include flex-center(row);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: calc($base-spacing * 1.5);
+
+    li {
+
+      a {
+        display: block;
+        color: $secondary-color;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        
+        padding: calc($base-spacing * 0.8) calc($base-spacing * 1.5);
+        background-color: lighten($secondary-color, 70%);
+        border-radius: calc($card-radius / 2);
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: $primary-color;
+          color: white;
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+}
+
+.hero-section {
+  @include flex-center(column);
+  padding: $hero-padding calc($base-spacing * 2); 
+  text-align: center;
+  background-color: $secondary-color;
+  color: white;
+  margin-bottom: calc($base-spacing * 3);
+
+  h1 {
+    color: white;
+    font-size: calc($base-spacing * 4.5); 
+    margin: 0 0 $base-spacing 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  p {
+    font-size: calc($base-spacing * 1.4);
+    max-width: 800px;
+    margin-bottom: calc($base-spacing * 2);
+    opacity: 0.9;
+  }
+
+  .btn-primary {
+    @extend %btn-shared;
+    background-color: $primary-color;
+    color: white;
+    font-size: 1.1rem;
+
+    &:hover {
+      background-color: $primary-dark;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 calc($base-spacing * 2) calc($base-spacing * 4);
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: calc($base-spacing * 2);
+  
+  .card {
+    width: calc(100% / 3 - ($base-spacing * 1.35)); 
+    background: white;
+    padding: calc($base-spacing * 2);
+    box-sizing: border-box;
+
+    border-radius: $card-radius; 
+    @include box-shadow(15px); 
+    
+    text-align: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    h3 {
+      margin-top: 0;
+      color: $primary-color;
+      font-size: calc($base-spacing * 1.5);
+    }
+
+    p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: $base-spacing;
+    }
+
+    strong {
+      display: block;
+      font-size: calc($base-spacing * 1.4);
+      color: $secondary-color;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  }
+}
