@@ -1,0 +1,35 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
+header,
+#intro {
+  height: 100vh;
+}
+
+#intro {
+  background: url("../img/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* KOREKTA: Odsunięcie kotwic od przyklejonego menu (navbar) */
+section {
+  scroll-margin-top: 75px; 
+}
+
+/* Carousel – wyrównanie wysokości slajdów */
+#carouselExampleCaptions .carousel-item {
+  padding-bottom: 40px;
+}
+
+/* Kontrolki karuzeli – ciemny kolor dla widoczności na białym tle */
+#carouselExampleCaptions .carousel-control-prev-icon,
+#carouselExampleCaptions .carousel-control-next-icon {
+  filter: invert(1) grayscale(100) brightness(0);
+}
+
+/* Kropki (indicators) – ciemny kolor */
+#carouselExampleCaptions .carousel-indicators [data-mdb-slide-to] {
+  background-color: #333;
+}

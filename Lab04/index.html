@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Start your project here-->
+
+  <!--Main Navigation-->
+  <header>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Podróżowanie</a>
+
+        <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#intro">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#lastTravels">Podróże</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#textImage">Recenzja kebaba</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#quote">Cytat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#carousel">Carousel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#faq">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#chart">Wykres</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Kontakt</a>
+            </li>
+          </ul>
+          <!-- <form class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Szukaj" aria-label="Search" />
+          </form> -->
+        </div>
+      </div>
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Mask-->
+    <div id="intro" class="bg-image">
+      <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.6)">
+        <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-md-10">
+              <h2 class="display-4 fw-bold text-white pt-5 mb-2">
+                Podróżowanie
+              </h2>
+
+              <hr class="border-light" />
+
+              <h4 class="text-white my-4">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Deleniti consequuntur.
+              </h4>
+
+              <a type="button" href="#lastTravels" class="btn btn-outline-light">
+                Dowiedz się więcej <i class="fas fa-book ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.Mask-->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="mt-5">
+    <div class="container">
+      <!--Section: LastTravels-->
+      <section id="lastTravels" class="text-center">
+        <h2 class="fw-bold text-center my-5">Ostatnie Podróże</h2>
+
+        <!--Grid row-->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+          <!-- Card 1 -->
+          <div class="col" data-aos="fade-up" data-aos-delay="0">
+            <div class="card h-100 shadow-3-strong">
+              <!-- Custom Trigger na View Transitions API -->
+              <div class="bg-image hover-overlay hover-zoom ripple v-trip-trigger" data-mdb-ripple-init
+                data-mdb-ripple-color="light" data-v-target="#tripModal1" style="cursor: pointer;">
+                <img src="img/trip1.jpg" class="card-img-top" alt="Podróż 1" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Wspaniała przygoda na horyzoncie!</h5>
+                <p class="card-text text-muted">
+                  Zastosowano tutaj autorskie okno modalne na pełen ekran wraz z biblioteką <strong>View Transitions
+                    API</strong>, generując prawdziwy efekt Morphingu (Shared Element Transition) w 100% natywnie.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /Card 1 -->
+
+          <!-- Card 2 -->
+          <div class="col" data-aos="fade-up" data-aos-delay="150">
+            <div class="card h-100 shadow-3-strong">
+              <div class="bg-image hover-overlay hover-zoom ripple v-trip-trigger" data-mdb-ripple-init
+                data-mdb-ripple-color="light" data-v-target="#tripModal2" style="cursor: pointer;">
+                <img src="img/trip2.jpg" class="card-img-top" alt="Podróż 2" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Niezapomniane wspomnienia!</h5>
+                <p class="card-text text-muted">
+                  Zastosowano tutaj autorskie okno modalne na pełen ekran wraz z biblioteką <strong>View Transitions
+                    API</strong>, generując prawdziwy efekt Morphingu (Shared Element Transition) w 100% natywnie.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /Card 2 -->
+
+          <!-- Card 3 -->
+          <div class="col" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 shadow-3-strong">
+              <div class="bg-image hover-overlay hover-zoom ripple v-trip-trigger" data-mdb-ripple-init
+                data-mdb-ripple-color="light" data-v-target="#tripModal3" style="cursor: pointer;">
+                <img src="img/trip3.jpg" class="card-img-top" alt="Podróż 3" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Odkryj z nami więcej!</h5>
+                <p class="card-text text-muted">
+                  Zastosowano tutaj autorskie okno modalne na pełen ekran wraz z biblioteką <strong>View Transitions
+                    API</strong>, generując prawdziwy efekt Morphingu (Shared Element Transition) w 100% natywnie.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /Card 3 -->
+
+          <!-- Card 4 -->
+          <div class="col" data-aos="fade-up" data-aos-delay="0">
+            <div class="card h-100 shadow-3-strong">
+              <div class="bg-image hover-overlay hover-zoom ripple v-trip-trigger" data-mdb-ripple-init
+                data-mdb-ripple-color="light" data-v-target="#tripModal4" style="cursor: pointer;">
+                <img src="img/trip4.jpg" class="card-img-top" alt="Podróż 4" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Czas na relaks!</h5>
+                <p class="card-text text-muted">
+                  Zastosowano tutaj autorskie okno modalne na pełen ekran wraz z biblioteką <strong>View Transitions
+                    API</strong>, generując prawdziwy efekt Morphingu (Shared Element Transition) w 100% natywnie.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /Card 4 -->
+
+          <!-- Card 5 -->
+          <div class="col" data-aos="fade-up" data-aos-delay="150">
+            <div class="card h-100 shadow-3-strong">
+              <div class="bg-image hover-overlay hover-zoom ripple v-trip-trigger" data-mdb-ripple-init
+                data-mdb-ripple-color="light" data-v-target="#tripModal5" style="cursor: pointer;">
+                <img src="img/trip5.jpg" class="card-img-top" alt="Podróż 5" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Przeżyj to sam!</h5>
+                <p class="card-text text-muted">
+                  Zastosowano tutaj autorskie okno modalne na pełen ekran wraz z biblioteką <strong>View Transitions
+                    API</strong>, generując prawdziwy efekt Morphingu (Shared Element Transition) w 100% natywnie.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /Card 5 -->
+
+          <!-- Card 6 -->
+          <div class="col" data-aos="fade-up" data-aos-delay="300">
+            <div class="card h-100 shadow-3-strong">
+              <div class="bg-image hover-overlay hover-zoom ripple v-trip-trigger" data-mdb-ripple-init
+                data-mdb-ripple-color="light" data-v-target="#tripModal6" style="cursor: pointer;">
+                <img src="img/trip6.jpg" class="card-img-top" alt="Podróż 6" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Oto twoje destynacje!</h5>
+                <p class="card-text text-muted">
+                  Zastosowano tutaj autorskie okno modalne na pełen ekran wraz z biblioteką <strong>View Transitions
+                    API</strong>, generując prawdziwy efekt Morphingu (Shared Element Transition) w 100% natywnie.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /Card 6 -->
+
+        </div>
+        <!--Grid row-->
+
+        <!-- ================= MIEJSCA NA MODALE Z VIEW TRANSITION ================= -->
+        <!-- Samo okno Modal 1 -->
+        <div class="modal" id="tripModal1" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+          aria-labelledby="tripModal1Label" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-light text-dark">
+              <div class="modal-header border-0">
+                <h5 class="modal-title display-6 fw-bold text-primary" id="tripModal1Label">Podróż 1</h5>
+                <!-- Używamy własnej klasy .v-trip-close zeby przejąc kontrolę nad zamykaniem -->
+                <button type="button" class="btn-close v-trip-close" data-mdb-ripple-init aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column align-items-center justify-content-center text-center">
+                <img src="img/trip1.jpg" class="img-fluid rounded shadow-5-strong mb-5 border border-3 border-white"
+                  alt="Podróż 1" style="max-height: 50vh; width: auto;" />
+                <h2 class="mb-4 fw-bold">Wspaniała przygoda na horyzoncie!</h2>
+                <p class="lead fs-4 text-muted" style="max-width: 800px;">Zastosowano tutaj autorskie okno modalne na
+                  pełen ekran wraz z biblioteką <strong>View Transitions API</strong>, generując prawdziwy efekt
+                  Morphingu (Shared Element Transition) w 100% natywnie.</p>
+              </div>
+              <div class="modal-footer border-0 justify-content-center pb-5">
+                <button type="button" class="btn btn-outline-primary btn-lg v-trip-close"
+                  data-mdb-ripple-init>Powrót</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Okno Modal 2 -->
+        <div class="modal" id="tripModal2" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+          aria-labelledby="tripModal2Label" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-light text-dark">
+              <div class="modal-header border-0">
+                <h5 class="modal-title display-6 fw-bold text-primary" id="tripModal2Label">Podróż 2</h5>
+                <button type="button" class="btn-close v-trip-close" data-mdb-ripple-init aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column align-items-center justify-content-center text-center">
+                <img src="img/trip2.jpg" class="img-fluid rounded shadow-5-strong mb-5 border border-3 border-white"
+                  alt="Podróż 2" style="max-height: 50vh; width: auto;" />
+                <h2 class="mb-4 fw-bold">Niezapomniane wspomnienia!</h2>
+                <p class="lead fs-4 text-muted" style="max-width: 800px;">Zastosowano tutaj autorskie okno modalne na
+                  pełen ekran wraz z biblioteką <strong>View Transitions API</strong>, generując prawdziwy efekt
+                  Morphingu (Shared Element Transition) w 100% natywnie.</p>
+              </div>
+              <div class="modal-footer border-0 justify-content-center pb-5">
+                <button type="button" class="btn btn-outline-primary btn-lg v-trip-close"
+                  data-mdb-ripple-init>Powrót</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Okno Modal 3 -->
+        <div class="modal" id="tripModal3" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+          aria-labelledby="tripModal3Label" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-light text-dark">
+              <div class="modal-header border-0">
+                <h5 class="modal-title display-6 fw-bold text-primary" id="tripModal3Label">Podróż 3</h5>
+                <button type="button" class="btn-close v-trip-close" data-mdb-ripple-init aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column align-items-center justify-content-center text-center">
+                <img src="img/trip3.jpg" class="img-fluid rounded shadow-5-strong mb-5 border border-3 border-white"
+                  alt="Podróż 3" style="max-height: 50vh; width: auto;" />
+                <h2 class="mb-4 fw-bold">Odkryj z nami więcej!</h2>
+                <p class="lead fs-4 text-muted" style="max-width: 800px;">Zastosowano tutaj autorskie okno modalne na
+                  pełen ekran wraz z biblioteką <strong>View Transitions API</strong>, generując prawdziwy efekt
+                  Morphingu (Shared Element Transition) w 100% natywnie.</p>
+              </div>
+              <div class="modal-footer border-0 justify-content-center pb-5">
+                <button type="button" class="btn btn-outline-primary btn-lg v-trip-close"
+                  data-mdb-ripple-init>Powrót</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Okno Modal 4 -->
+        <div class="modal" id="tripModal4" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+          aria-labelledby="tripModal4Label" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-light text-dark">
+              <div class="modal-header border-0">
+                <h5 class="modal-title display-6 fw-bold text-primary" id="tripModal4Label">Podróż 4</h5>
+                <button type="button" class="btn-close v-trip-close" data-mdb-ripple-init aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column align-items-center justify-content-center text-center">
+                <img src="img/trip4.jpg" class="img-fluid rounded shadow-5-strong mb-5 border border-3 border-white"
+                  alt="Podróż 4" style="max-height: 50vh; width: auto;" />
+                <h2 class="mb-4 fw-bold">Czas na relaks!</h2>
+                <p class="lead fs-4 text-muted" style="max-width: 800px;">Zastosowano tutaj autorskie okno modalne na
+                  pełen ekran wraz z biblioteką <strong>View Transitions API</strong>, generując prawdziwy efekt
+                  Morphingu (Shared Element Transition) w 100% natywnie.</p>
+              </div>
+              <div class="modal-footer border-0 justify-content-center pb-5">
+                <button type="button" class="btn btn-outline-primary btn-lg v-trip-close"
+                  data-mdb-ripple-init>Powrót</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Okno Modal 5 -->
+        <div class="modal" id="tripModal5" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+          aria-labelledby="tripModal5Label" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-light text-dark">
+              <div class="modal-header border-0">
+                <h5 class="modal-title display-6 fw-bold text-primary" id="tripModal5Label">Podróż 5</h5>
+                <button type="button" class="btn-close v-trip-close" data-mdb-ripple-init aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column align-items-center justify-content-center text-center">
+                <img src="img/trip5.jpg" class="img-fluid rounded shadow-5-strong mb-5 border border-3 border-white"
+                  alt="Podróż 5" style="max-height: 50vh; width: auto;" />
+                <h2 class="mb-4 fw-bold">Przeżyj to sam!</h2>
+                <p class="lead fs-4 text-muted" style="max-width: 800px;">Zastosowano tutaj autorskie okno modalne na
+                  pełen ekran wraz z biblioteką <strong>View Transitions API</strong>, generując prawdziwy efekt
+                  Morphingu (Shared Element Transition) w 100% natywnie.</p>
+              </div>
+              <div class="modal-footer border-0 justify-content-center pb-5">
+                <button type="button" class="btn btn-outline-primary btn-lg v-trip-close"
+                  data-mdb-ripple-init>Powrót</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Okno Modal 6 -->
+        <div class="modal" id="tripModal6" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1"
+          aria-labelledby="tripModal6Label" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content bg-light text-dark">
+              <div class="modal-header border-0">
+                <h5 class="modal-title display-6 fw-bold text-primary" id="tripModal6Label">Podróż 6</h5>
+                <button type="button" class="btn-close v-trip-close" data-mdb-ripple-init aria-label="Close"></button>
+              </div>
+              <div class="modal-body d-flex flex-column align-items-center justify-content-center text-center">
+                <img src="img/trip6.jpg" class="img-fluid rounded shadow-5-strong mb-5 border border-3 border-white"
+                  alt="Podróż 6" style="max-height: 50vh; width: auto;" />
+                <h2 class="mb-4 fw-bold">Oto twoje destynacje!</h2>
+                <p class="lead fs-4 text-muted" style="max-width: 800px;">Zastosowano tutaj autorskie okno modalne na
+                  pełen ekran wraz z biblioteką <strong>View Transitions API</strong>, generując prawdziwy efekt
+                  Morphingu (Shared Element Transition) w 100% natywnie.</p>
+              </div>
+              <div class="modal-footer border-0 justify-content-center pb-5">
+                <button type="button" class="btn btn-outline-primary btn-lg v-trip-close"
+                  data-mdb-ripple-init>Powrót</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ================= MIEJSCA NA MODALE Z VIEW TRANSITION ================= -->
+
+      </section>
+      <!--Section: LastTravels-->
+
+      <hr class="my-5" />
+
+
+      <!--Section: Gallery-->
+      <section id="textImage">
+        <h2 class="fw-bold text-center my-5">Recenzja kebaba</h2>
+
+        <div class="row align-items-center">
+          <!-- Zdjęcie (1/4 szerokości) -->
+          <div class="col-md-3" data-aos="fade-right">
+            <img src="img/Kebab.jpg" class="img-fluid shadow" alt="Kebab" />
+          </div>
+
+          <!-- Tekst (3/4 szerokości) -->
+          <div class="col-md-9" data-aos="fade-left">
+            <h3 class="fw-bold mb-3">Najgorszy kebab w historii ludzkości</h3>
+            <p class="text-muted">
+              Trudno mi znaleźć słowa, które w pełni oddałyby grozę tego
+              doświadczenia. Mięso miało konsystencję starej gąbki do naczyń,
+              a zapach przypominał połączenie mokrego psa i stacji benzynowej.
+              Sos ciekł po rękach niczym deszcz tropikalny, niszcząc po drodze
+              wszystko, co napotkał.
+            </p>
+            <p class="text-muted">
+              Warzywa były tak zwiędłe, jakby pamiętały jeszcze poprzedni
+              rząd. Chleb rozpadał się przy pierwszym kontakcie z zębami,
+              rozsiewając okruszki w promieniu dwóch metrów. Jedyną pozytywną
+              rzeczą był plastikowy widelec dołączony do zamówienia –
+              przynajmniej on był świeży.
+            </p>
+            <a class="btn btn-danger" data-mdb-ripple-init>Nigdy więcej</a>
+          </div>
+        </div>
+      </section>
+      <!--Section: Gallery-->
+
+      <hr class="my-5" />
+
+      <!--Section: quote-->
+      <section id="quote">
+        <h2 class="fw-bold text-center my-5" data-aos="fade-up">Cytat</h2>
+
+        <div class="p-10 text-center bg-primary text-white rounded shadow-3-strong" data-aos="zoom-in"
+          data-aos-delay="200">
+          <h2 class="fw-bold pt-2 mb-4">
+            <i class="fas fa-quote-left me-3"></i>
+            Świat jest książką, a ci, którzy nie podróżują, czytają tylko
+            jedną stronę.
+            <i class="fas fa-quote-right ms-3"></i>
+          </h2>
+          <p class="fw-bold">– Turek z kebaba</p>
+        </div>
+      </section>
+      <!--Section: quote-->
+
+      <hr class="my-5" />
+
+      <!--Section: Carousel-->
+      <section id="carousel">
+        <h2 class="fw-bold text-center my-5" data-aos="fade-up">Nasz zespół</h2>
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="carousel-indicators">
+            <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-mdb-target="#carouselExampleCaptions" data-mdb-slide-to="1"
+              aria-label="Slide 2"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <!-- Slajd 1 -->
+            <div class="carousel-item active">
+              <div class="row px-4 pb-4">
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">Anna Kowalska</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        Przewodnik turystyczny
+                      </h6>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">Jan Nowak</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Fotograf</h6>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">Marta Wiśniewska</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        Koordynator tras
+                      </h6>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Slajd 1 -->
+
+            <!-- Slajd 2 -->
+            <div class="carousel-item">
+              <div class="row px-4 pb-4">
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">Piotr Zając</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Kierowca</h6>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">Karolina Dąbrowska</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        Specjalista ds. rezerwacji
+                      </h6>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title fw-bold">Tomasz Lewandowski</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Manager</h6>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Slajd 2 -->
+          </div>
+          <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions"
+            data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions"
+            data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+      <!--Section: Carousel-->
+
+      <hr class="my-5" />
+      <section id="faq">
+        <h2 class="fw-bold text-center my-5" data-aos="fade-up">
+          FAQ – Najczęstsze pytania o kebaba
+        </h2>
+
+        <div class="accordion shadow-2-strong" id="accordionFAQ" data-mdb-accordion-init data-aos="fade-up"
+          data-aos-delay="100">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading1">
+              <button class="accordion-button" type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                data-mdb-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                Czy kebab był jadalny?
+              </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+              data-mdb-parent="#accordionFAQ">
+              <div class="accordion-body">
+                Technicznie rzecz biorąc – tak. Można go było włożyć do ust i
+                przełknąć. Jednak to samo można powiedzieć o kartonie.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading2">
+              <button class="accordion-button collapsed" type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                data-mdb-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                Czy warto tam wracać?
+              </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
+              data-mdb-parent="#accordionFAQ">
+              <div class="accordion-body">
+                Absolutnie nie. Jedynym powodem powrotu byłoby upewnienie się,
+                że lokal już nie istnieje.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading3">
+              <button class="accordion-button collapsed" type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                data-mdb-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                Jak długo trwało dochodzenie do siebie po posiłku?
+              </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
+              data-mdb-parent="#accordionFAQ">
+              <div class="accordion-body">
+                Trzy dni. Czwarty spędziłem na pisaniu tej recenzji jako forma
+                terapii.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading4">
+              <button class="accordion-button collapsed" type="button" data-mdb-collapse-init data-mdb-toggle="collapse"
+                data-mdb-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                Czy polecasz ten kebab znajomym?
+              </button>
+            </h2>
+            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
+              data-mdb-parent="#accordionFAQ">
+              <div class="accordion-body">
+                Tylko tym, których szczerze nie lubię.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="my-5" />
+
+      <!--Section: Chart-->
+      <section id="chart" class="container">
+        <h2 class="fw-bold text-center my-5" data-aos="fade-up">
+          Najpopularniejsze kierunki podróży
+        </h2>
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+            <canvas id="travelsChart" style="max-height: 400px; width: 100%;"></canvas>
+          </div>
+        </div>
+      </section>
+      <!--Section: Chart-->
+
+      <hr class="my-5" />
+
+      <!--Section: Contact-->
+      <section id="contact">
+        <h2 class="fw-bold text-center my-5">Kontakt</h2>
+
+        <div class="row">
+          <!-- Formularz -->
+          <div class="col-md-9 mb-md-0 mb-5" data-aos="fade-right">
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-outline mb-4" data-mdb-input-init>
+                    <input type="text" id="name" name="name" class="form-control" />
+                    <label class="form-label" for="name">Imię i nazwisko</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-outline mb-4" data-mdb-input-init>
+                    <input type="text" id="email" name="email" class="form-control" />
+                    <label class="form-label" for="email">Email</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline mb-4" data-mdb-input-init>
+                    <input type="text" id="subject" name="subject" class="form-control" />
+                    <label class="form-label" for="subject">Temat</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-outline mb-4" data-mdb-input-init>
+                    <textarea id="message" name="message" rows="4" class="form-control"></textarea>
+                    <label class="form-label" for="message">Wiadomość</label>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" data-mdb-ripple-init>
+                Wyślij
+              </button>
+            </form>
+          </div>
+          <!-- /Formularz -->
+
+          <!-- Google Maps -->
+          <div class="col-md-3" data-aos="fade-left">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d420.1129851444654!2d17.05725677554205!3d51.10994511466566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9d53c300001%3A0xc6c3cd686a71e240!2sD-2%20Politechnika%20Wroc%C5%82awska!5e1!3m2!1spl!2spl!4v1774710796002!5m2!1spl!2spl"
+              width="100%" height="300" style="border: 0; display: block;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <!-- /Google Maps -->
+        </div>
+      </section>
+      <!--Section: Contact-->
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer>
+    <br><br><br>
+    <br><br><br>
+  </footer>
+  <!--Footer-->
+
+  <!-- End your project here-->
+
+  <!-- MDB -->
+  <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript">
+    AOS.init({ once: false, duration: 800 });
+
+    // --- VIEW TRANSITIONS API OBSŁUGA MODALI ---
+    let currentCardImg = null;
+    let currentCardTitle = null;
+    let currentCardDesc = null;
+
+    let currentModalImg = null;
+    let currentModalTitle = null;
+    let currentModalDesc = null;
+
+    // Otwieranie
+    document.querySelectorAll('.v-trip-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = trigger.getAttribute('data-v-target');
+        const targetModalEl = document.querySelector(targetId);
+        const modalInstance = new mdb.Modal(targetModalEl);
+
+        const cardEl = trigger.closest('.card');
+        currentCardImg = trigger.querySelector('.card-img-top');
+        currentCardTitle = cardEl.querySelector('.card-title');
+        currentCardDesc = cardEl.querySelector('.card-text');
+
+        currentModalImg = targetModalEl.querySelector('.modal-body img');
+        currentModalTitle = targetModalEl.querySelector('.modal-body h2');
+        currentModalDesc = targetModalEl.querySelector('.modal-body p.lead');
+
+        if (document.startViewTransition) {
+          currentCardImg.style.viewTransitionName = 'active-trip-img';
+          currentCardTitle.style.viewTransitionName = 'active-trip-title';
+          currentCardDesc.style.viewTransitionName = 'active-trip-desc';
+
+          document.startViewTransition(() => {
+            currentCardImg.style.viewTransitionName = '';
+            currentCardTitle.style.viewTransitionName = '';
+            currentCardDesc.style.viewTransitionName = '';
+
+            currentModalImg.style.viewTransitionName = 'active-trip-img';
+            currentModalTitle.style.viewTransitionName = 'active-trip-title';
+            currentModalDesc.style.viewTransitionName = 'active-trip-desc';
+
+            modalInstance.show();
+          });
+        } else {
+          modalInstance.show();
+        }
+      });
+    });
+
+    // Zamykanie
+    document.querySelectorAll('.v-trip-close').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modalEl = btn.closest('.modal');
+        const modalInstance = mdb.Modal.getInstance(modalEl);
+
+        if (document.startViewTransition && currentCardImg) {
+          document.startViewTransition(() => {
+            currentModalImg.style.viewTransitionName = '';
+            currentModalTitle.style.viewTransitionName = '';
+            currentModalDesc.style.viewTransitionName = '';
+
+            currentCardImg.style.viewTransitionName = 'active-trip-img';
+            currentCardTitle.style.viewTransitionName = 'active-trip-title';
+            currentCardDesc.style.viewTransitionName = 'active-trip-desc';
+
+            modalInstance.hide();
+          }).finished.then(() => {
+            currentCardImg.style.viewTransitionName = '';
+            currentCardTitle.style.viewTransitionName = '';
+            currentCardDesc.style.viewTransitionName = '';
+          });
+        } else {
+          modalInstance.hide();
+        }
+      });
+    });
+    // --- KONIEC VIEW TRANSITIONS ---
+
+    var ctx = document.getElementById("travelsChart").getContext("2d");
+    new Chart(ctx, {
+      type: "bar", // typ: słupkowy
+      data: {
+        labels: [
+          "Włochy",
+          "Grecja",
+          "Hiszpania",
+          "Francja",
+          "Portugalia",
+          "Chorwacja",
+        ],
+        datasets: [
+          {
+            label: "Liczba rezerwacji",
+            data: [320, 280, 250, 200, 175, 160],
+            backgroundColor: "rgba(13, 110, 253, 0.7)", // niebieski Bootstrap
+            borderWidth: 5,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }, // oś Y zaczyna od 0
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>
