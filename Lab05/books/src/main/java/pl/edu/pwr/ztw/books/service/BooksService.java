@@ -17,8 +17,11 @@ public class BooksService implements IBooksService {
     @Autowired
     private IAuthorsService authorsService;
 
+    @Autowired
+    private ILoansService loansService;
+
     static { 
-        // Initialized after authors are loaded
+        
     }
 
     @Override
@@ -43,6 +46,9 @@ public class BooksService implements IBooksService {
 
     @Override
     public Book createBook(String title, int authorId, int pages) {
+        if (pages <= 0) {
+            return null;
+        }
         Author author = authorsService.getAuthor(authorId);
         if (author == null) {
             return null;
@@ -54,6 +60,9 @@ public class BooksService implements IBooksService {
 
     @Override
     public Book updateBook(int id, String title, int authorId, int pages) {
+        if (pages <= 0) {
+            return null;
+        }
         Book book = getBook(id);
         if (book != null) {
             Author author = authorsService.getAuthor(authorId);
@@ -68,10 +77,16 @@ public class BooksService implements IBooksService {
 
     @Override
     public boolean deleteBook(int id) {
+        boolean hasActiveLoans = loansService.getLoansByBook(id).stream()
+                .anyMatch(loan -> !loan.isReturned());
+        
+        if (hasActiveLoans) {
+            return false;
+        }
+        
         return booksRepo.removeIf(b -> b.getId() == id);
     }
 
-    // Helper method to initialize books with authors
     public void initializeBooks() {
         Author author1 = authorsService.getAuthor(1);
         Author author2 = authorsService.getAuthor(2);

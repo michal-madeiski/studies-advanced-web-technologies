@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import pl.edu.pwr.ztw.books.service.BooksService;
+import pl.edu.pwr.ztw.books.service.LoansService;
 
 @SpringBootApplication
 public class BooksApplication {
@@ -11,5 +12,7 @@ public class BooksApplication {
         ApplicationContext context = SpringApplication.run(BooksApplication.class, args);
         BooksService booksService = context.getBean(BooksService.class);
         booksService.initializeBooks();
+        LoansService loansService = context.getBean(LoansService.class);
+        loansService.initializeLoans();
     }
 }

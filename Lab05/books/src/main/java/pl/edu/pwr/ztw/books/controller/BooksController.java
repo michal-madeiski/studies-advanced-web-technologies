@@ -17,13 +17,13 @@ public class BooksController {
     @Autowired
     IBooksService booksService;
 
-    @RequestMapping(value = "/get/books", method = RequestMethod.GET)
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
     @Operation(summary = "Get all books")
     public ResponseEntity<Object> getBooks() {
         return new ResponseEntity<>(booksService.getBooks(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/get/book/{id}", method = RequestMethod.GET) 
+    @RequestMapping(value = "/books/{id}", method = RequestMethod.GET) 
     @Operation(summary = "Get book details")
     public ResponseEntity<Object> getBook(@Parameter(description = "Book ID", example = "1") @PathVariable("id") int id) {
         Book book = booksService.getBook(id);
@@ -34,13 +34,13 @@ public class BooksController {
         }
     }
 
-    @RequestMapping(value = "/get/books/author/{authorId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/books/authors/{authorId}", method = RequestMethod.GET)
     @Operation(summary = "Get books by author")
     public ResponseEntity<Object> getBooksByAuthor(@Parameter(description = "Author ID", example = "1") @PathVariable("authorId") int authorId) {
         return new ResponseEntity<>(booksService.getBooksByAuthor(authorId), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/create/book", method = RequestMethod.POST)
+    @RequestMapping(value = "/books", method = RequestMethod.POST)
     @Operation(summary = "Create new book")
     public ResponseEntity<Object> createBook(@Parameter(description = "Book data") @RequestBody Book book) {
         Book createdBook = booksService.createBook(book.getTitle(), book.getAuthor().getId(), book.getPages());
@@ -51,7 +51,7 @@ public class BooksController {
         }
     }
 
-    @RequestMapping(value = "/update/book/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/books/{id}", method = RequestMethod.PUT)
     @Operation(summary = "Update book")
     public ResponseEntity<Object> updateBook(@Parameter(description = "Book ID", example = "1") @PathVariable("id") int id,
                                             @Parameter(description = "Updated book data") @RequestBody Book book) {
@@ -63,7 +63,7 @@ public class BooksController {
         }
     }
 
-    @RequestMapping(value = "/delete/book/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/books/{id}", method = RequestMethod.DELETE)
     @Operation(summary = "Delete book")
     public ResponseEntity<Object> deleteBook(@Parameter(description = "Book ID", example = "1") @PathVariable("id") int id) {
         boolean deleted = booksService.deleteBook(id);

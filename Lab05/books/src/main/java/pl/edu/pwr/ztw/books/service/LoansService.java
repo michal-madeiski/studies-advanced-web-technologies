@@ -22,6 +22,20 @@ public class LoansService implements ILoansService {
     @Autowired
     private IReadersService readersService;
 
+    public void initializeLoans() {
+        Book book1 = booksService.getBook(1);
+        Book book2 = booksService.getBook(2);
+        Reader reader1 = readersService.getReader(1);
+        Reader reader2 = readersService.getReader(2);
+        Reader reader3 = readersService.getReader(3);
+
+        if (book1 != null && book2 != null && reader1 != null && reader2 != null && reader3 != null) {
+            loansRepo.add(new Loan(1, book1, reader1, LocalDate.of(2024, 1, 15)));
+            loansRepo.add(new Loan(2, book2, reader2, LocalDate.of(2024, 2, 10)));
+            loansRepo.add(new Loan(3, book1, reader3, LocalDate.of(2024, 3, 5), LocalDate.of(2024, 3, 20)));
+        }
+    }
+
     @Override
     public Collection<Loan> getLoans() {
         return loansRepo;

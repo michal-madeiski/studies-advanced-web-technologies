@@ -17,6 +17,14 @@ public class Loan {
         this.returnDate = null;
     }
 
+    public Loan(int id, Book book, Reader reader, LocalDate loanDate, LocalDate returnDate) {
+        this.id = id;
+        this.book = book;
+        this.reader = reader;
+        this.loanDate = loanDate;
+        this.returnDate = returnDate;
+    }
+
     public int getId() { return id; }
     public Book getBook() { return book; }
     public void setBook(Book book) { this.book = book; }
