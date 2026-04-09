@@ -36,18 +36,16 @@ public class ReadersController {
 
     @RequestMapping(value = "/create/reader", method = RequestMethod.POST)
     @Operation(summary = "Create new reader")
-    public ResponseEntity<Object> createReader(@Parameter(description = "Reader first and last name", example = "Tomasz Nowak") @RequestParam String name,
-                                              @Parameter(description = "Reader email", example = "tomasz@mail.com") @RequestParam String email) {
-        Reader createdReader = readersService.createReader(name, email);
+    public ResponseEntity<Object> createReader(@Parameter(description = "Reader data") @RequestBody Reader reader) {
+        Reader createdReader = readersService.createReader(reader.getName(), reader.getEmail());
         return new ResponseEntity<>(createdReader, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/update/reader/{id}", method = RequestMethod.PUT)
     @Operation(summary = "Update reader")
     public ResponseEntity<Object> updateReader(@Parameter(description = "Reader ID", example = "1") @PathVariable("id") int id,
-                                              @Parameter(description = "New reader name", example = "Tomasz Kowalski") @RequestParam String name,
-                                              @Parameter(description = "New reader email", example = "tomasz.kowalski@mail.com") @RequestParam String email) {
-        Reader updatedReader = readersService.updateReader(id, name, email);
+                                              @Parameter(description = "Updated reader data") @RequestBody Reader reader) {
+        Reader updatedReader = readersService.updateReader(id, reader.getName(), reader.getEmail());
         if (updatedReader != null) {
             return new ResponseEntity<>(updatedReader, HttpStatus.OK);
         } else {

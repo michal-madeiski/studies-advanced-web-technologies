@@ -54,9 +54,8 @@ public class LoansController {
 
     @RequestMapping(value = "/create/loan", method = RequestMethod.POST)
     @Operation(summary = "Create new loan")
-    public ResponseEntity<Object> createLoan(@Parameter(description = "Book ID", example = "1") @RequestParam int bookId,
-                                            @Parameter(description = "Reader ID", example = "1") @RequestParam int readerId) {
-        Loan createdLoan = loansService.createLoan(bookId, readerId);
+    public ResponseEntity<Object> createLoan(@Parameter(description = "Loan data") @RequestBody Loan loan) {
+        Loan createdLoan = loansService.createLoan(loan.getBook().getId(), loan.getReader().getId());
         if (createdLoan != null) {
             return new ResponseEntity<>(createdLoan, HttpStatus.CREATED);
         } else {

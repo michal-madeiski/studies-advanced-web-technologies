@@ -42,10 +42,8 @@ public class BooksController {
 
     @RequestMapping(value = "/create/book", method = RequestMethod.POST)
     @Operation(summary = "Create new book")
-    public ResponseEntity<Object> createBook(@Parameter(description = "Book title", example = "Quo Vadis") @RequestParam String title, 
-                                            @Parameter(description = "Author ID", example = "1") @RequestParam int authorId, 
-                                            @Parameter(description = "Pages count", example = "900") @RequestParam int pages) {
-        Book createdBook = booksService.createBook(title, authorId, pages);
+    public ResponseEntity<Object> createBook(@Parameter(description = "Book data") @RequestBody Book book) {
+        Book createdBook = booksService.createBook(book.getTitle(), book.getAuthor().getId(), book.getPages());
         if (createdBook != null) {
             return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
         } else {
@@ -56,10 +54,8 @@ public class BooksController {
     @RequestMapping(value = "/update/book/{id}", method = RequestMethod.PUT)
     @Operation(summary = "Update book")
     public ResponseEntity<Object> updateBook(@Parameter(description = "Book ID", example = "1") @PathVariable("id") int id,
-                                            @Parameter(description = "New book title", example = "Novo Quo Vadis") @RequestParam String title,
-                                            @Parameter(description = "New author ID", example = "1") @RequestParam int authorId,
-                                            @Parameter(description = "New pages count", example = "950") @RequestParam int pages) {
-        Book updatedBook = booksService.updateBook(id, title, authorId, pages);
+                                            @Parameter(description = "Updated book data") @RequestBody Book book) {
+        Book updatedBook = booksService.updateBook(id, book.getTitle(), book.getAuthor().getId(), book.getPages());
         if (updatedBook != null) {
             return new ResponseEntity<>(updatedBook, HttpStatus.OK);
         } else {
