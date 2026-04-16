@@ -4,7 +4,8 @@ import pl.edu.pwr.ztw.books.model.Loan;
 import java.util.Collection;
 
 public interface ILoansService {
-    Collection<Loan> getLoans();
+    Collection<Loan> getLoans(int page, int size);
+    int getLoansCount();
     Loan getLoan(int id);
     Collection<Loan> getLoansByReader(int readerId);
     Collection<Loan> getLoansByBook(int bookId);

@@ -9,6 +9,8 @@ public class Loan {
     private LocalDate loanDate;
     private LocalDate returnDate;
 
+    public Loan() {}
+
     public Loan(int id, Book book, Reader reader, LocalDate loanDate) {
         this.id = id;
         this.book = book;

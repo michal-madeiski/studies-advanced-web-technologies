@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.ztw.books.model.Reader;
+import pl.edu.pwr.ztw.books.service.ILoansService;
 import pl.edu.pwr.ztw.books.service.IReadersService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,10 +18,19 @@ public class ReadersController {
     @Autowired
     IReadersService readersService;
 
+    @Autowired
+    ILoansService loansService;
+
     @RequestMapping(value = "/readers", method = RequestMethod.GET)
-    @Operation(summary = "Get all readers")
-    public ResponseEntity<Object> getReaders() {
-        return new ResponseEntity<>(readersService.getReaders(), HttpStatus.OK);
+    @Operation(summary = "Get all readers with pagination")
+    public ResponseEntity<Object> getReaders(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        return ResponseEntity.ok()
+                .header("X-Total-Count", String.valueOf(readersService.getReadersCount()))
+                .header("Access-Control-Expose-Headers", "X-Total-Count")
+                .body(readersService.getReaders(page, size));
     }
 
     @RequestMapping(value = "/readers/{id}", method = RequestMethod.GET)
@@ -56,6 +66,11 @@ public class ReadersController {
     @RequestMapping(value = "/readers/{id}", method = RequestMethod.DELETE)
     @Operation(summary = "Delete reader")
     public ResponseEntity<Object> deleteReader(@Parameter(description = "Reader ID", example = "1") @PathVariable("id") int id) {
+        boolean hasActiveLoans = loansService.getLoansByReader(id).stream()
+                .anyMatch(loan -> !loan.isReturned());
+        if (hasActiveLoans) {
+            return new ResponseEntity<>("Nie można usunąć czytelnika z aktywnymi wypożyczeniami", HttpStatus.CONFLICT);
+        }
         boolean deleted = readersService.deleteReader(id);
         if (deleted) {
             return new ResponseEntity<>("Reader deleted successfully", HttpStatus.OK);

@@ -4,7 +4,8 @@ import pl.edu.pwr.ztw.books.model.Author;
 import java.util.Collection;
 
 public interface IAuthorsService {
-    Collection<Author> getAuthors();
+    Collection<Author> getAuthors(int page, int size);
+    int getAuthorsCount();
     Author getAuthor(int id);
     Author createAuthor(String name);
     Author updateAuthor(int id, String name);

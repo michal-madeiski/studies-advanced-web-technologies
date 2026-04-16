@@ -18,9 +18,15 @@ public class LoansController {
     ILoansService loansService;
 
     @RequestMapping(value = "/loans", method = RequestMethod.GET)
-    @Operation(summary = "Get all loans")
-    public ResponseEntity<Object> getLoans() {
-        return new ResponseEntity<>(loansService.getLoans(), HttpStatus.OK);
+    @Operation(summary = "Get all loans with pagination")
+    public ResponseEntity<Object> getLoans(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        return ResponseEntity.ok()
+                .header("X-Total-Count", String.valueOf(loansService.getLoansCount()))
+                .header("Access-Control-Expose-Headers", "X-Total-Count")
+                .body(loansService.getLoans(page, size));
     }
 
     @RequestMapping(value = "/loans/{id}", method = RequestMethod.GET)

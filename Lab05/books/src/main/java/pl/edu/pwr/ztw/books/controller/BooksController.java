@@ -18,9 +18,15 @@ public class BooksController {
     IBooksService booksService;
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
-    @Operation(summary = "Get all books")
-    public ResponseEntity<Object> getBooks() {
-        return new ResponseEntity<>(booksService.getBooks(), HttpStatus.OK);
+    @Operation(summary = "Get all books with pagination")
+    public ResponseEntity<Object> getBooks(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        return ResponseEntity.ok()
+                .header("X-Total-Count", String.valueOf(booksService.getBooksCount()))
+                .header("Access-Control-Expose-Headers", "X-Total-Count")
+                .body(booksService.getBooks(page, size));
     }
 
     @RequestMapping(value = "/books/{id}", method = RequestMethod.GET) 
@@ -66,11 +72,14 @@ public class BooksController {
     @RequestMapping(value = "/books/{id}", method = RequestMethod.DELETE)
     @Operation(summary = "Delete book")
     public ResponseEntity<Object> deleteBook(@Parameter(description = "Book ID", example = "1") @PathVariable("id") int id) {
+        if (booksService.getBook(id) == null) {
+            return new ResponseEntity<>("Book not found", HttpStatus.NOT_FOUND);
+        }
         boolean deleted = booksService.deleteBook(id);
         if (deleted) {
             return new ResponseEntity<>("Book deleted successfully", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Book not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Nie można usunąć książki z aktywnymi wypożyczeniami", HttpStatus.CONFLICT);
         }
     }
 }

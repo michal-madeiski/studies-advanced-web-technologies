@@ -1,82 +1,145 @@
 <template>
-  <div id="app" class="small-container">
-    <h1>Znajomi</h1>
-    <person-form @add:person="addPerson" />
-    <persons-table :personsSource="persons" />
-  </div>
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
 
 <script>
-import PersonsTable from '@/components/PersonsTable.vue'
-import PersonForm from './components/PersonForm.vue';
-
 export default {
-  name: 'app',
-  components: {
-    PersonsTable,
-    PersonForm
-  },
-  methods: {
-    addPerson(person) {
-      this.persons.push({ id: this.persons.length + 1, ...person })
-    },
-    async getPersons() {
-      try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users')
-        const data = await response.json()
-        this.persons = data
-      } catch (error) {
-        console.error(error)
-      }
-    },
-
-  },
-  data() {
-    return {
-      persons: [
-        {
-          id: 1,
-          name: 'Adam Słodowy',
-          email: 'adam.slodowy@zrobtosam.pl',
-          phone: '+48 787 774 664'
-        },
-        {
-          id: 2,
-          name: 'Michał Studencki',
-          email: 'ms@student.pwr.edu.pl',
-          phone: '+48 600 565 454'
-        },
-        {
-          id: 3,
-          name: 'Kamila Napokaz',
-          email: 'kami2003@h2.pl',
-          phone: '+48 609 554 987'
-        }
-      ]
+  name: 'App',
+  computed: {
+    layout() {
+      return this.$route.meta.layout || 'div'
     }
-  },
-  mounted() {
-    this.getPersons()
   }
 }
 </script>
 
 <style>
-#app {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background: #f5f7fa;
 }
 
 button {
-  background: #009435;
-  border: 1px solid #009435;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
 }
 
-.small-container {
-  max-width: 680px;
+button.btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+button.btn-danger {
+  background: #dc2626;
+  color: #fff;
+}
+
+button.btn-warning {
+  background: #d97706;
+  color: #fff;
+}
+
+button.btn-secondary {
+  background: #6b7280;
+  color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background: #f1f5f9;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+tr:hover td {
+  background: #f8fafc;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.success-message {
+  color: #16a34a;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.page-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
 }
 </style>

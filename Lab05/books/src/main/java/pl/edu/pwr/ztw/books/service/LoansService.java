@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @Service
 public class LoansService implements ILoansService {
     private static List<Loan> loansRepo = new ArrayList<>();
-    private static int nextId = 1;
+    private static int nextId = 16;
 
     @Autowired
     private IBooksService booksService;
@@ -23,22 +23,64 @@ public class LoansService implements ILoansService {
     private IReadersService readersService;
 
     public void initializeLoans() {
-        Book book1 = booksService.getBook(1);
-        Book book2 = booksService.getBook(2);
-        Reader reader1 = readersService.getReader(1);
-        Reader reader2 = readersService.getReader(2);
-        Reader reader3 = readersService.getReader(3);
+        Book b1  = booksService.getBook(1);
+        Book b2  = booksService.getBook(2);
+        Book b3  = booksService.getBook(3);
+        Book b4  = booksService.getBook(4);
+        Book b5  = booksService.getBook(5);
+        Book b6  = booksService.getBook(6);
+        Book b7  = booksService.getBook(7);
+        Book b8  = booksService.getBook(8);
+        Book b9  = booksService.getBook(9);
+        Book b10 = booksService.getBook(10);
+        Book b11 = booksService.getBook(11);
+        Book b12 = booksService.getBook(12);
+        Book b13 = booksService.getBook(13);
+        Book b14 = booksService.getBook(14);
+        Reader r1  = readersService.getReader(1);
+        Reader r2  = readersService.getReader(2);
+        Reader r3  = readersService.getReader(3);
+        Reader r4  = readersService.getReader(4);
+        Reader r5  = readersService.getReader(5);
+        Reader r6  = readersService.getReader(6);
+        Reader r7  = readersService.getReader(7);
+        Reader r8  = readersService.getReader(8);
+        Reader r9  = readersService.getReader(9);
+        Reader r10 = readersService.getReader(10);
+        Reader r11 = readersService.getReader(11);
+        Reader r12 = readersService.getReader(12);
+        Reader r13 = readersService.getReader(13);
+        Reader r14 = readersService.getReader(14);
+        Reader r15 = readersService.getReader(15);
 
-        if (book1 != null && book2 != null && reader1 != null && reader2 != null && reader3 != null) {
-            loansRepo.add(new Loan(1, book1, reader1, LocalDate.of(2024, 1, 15)));
-            loansRepo.add(new Loan(2, book2, reader2, LocalDate.of(2024, 2, 10)));
-            loansRepo.add(new Loan(3, book1, reader3, LocalDate.of(2024, 3, 5), LocalDate.of(2024, 3, 20)));
-        }
+        loansRepo.add(new Loan(1,  b1,  r1,  LocalDate.of(2024, 1, 15)));
+        loansRepo.add(new Loan(2,  b2,  r2,  LocalDate.of(2024, 2, 10)));
+        loansRepo.add(new Loan(3,  b1,  r3,  LocalDate.of(2024, 3,  5), LocalDate.of(2024, 3, 20)));
+        loansRepo.add(new Loan(4,  b3,  r4,  LocalDate.of(2024, 4,  1)));
+        loansRepo.add(new Loan(5,  b4,  r5,  LocalDate.of(2024, 4, 15), LocalDate.of(2024, 5,  1)));
+        loansRepo.add(new Loan(6,  b5,  r6,  LocalDate.of(2024, 5, 10)));
+        loansRepo.add(new Loan(7,  b6,  r7,  LocalDate.of(2024, 6,  1), LocalDate.of(2024, 6, 20)));
+        loansRepo.add(new Loan(8,  b7,  r8,  LocalDate.of(2024, 7,  5)));
+        loansRepo.add(new Loan(9,  b8,  r9,  LocalDate.of(2024, 8, 10), LocalDate.of(2024, 8, 25)));
+        loansRepo.add(new Loan(10, b9,  r10, LocalDate.of(2024, 9,  1)));
+        loansRepo.add(new Loan(11, b10, r11, LocalDate.of(2024, 10, 15)));
+        loansRepo.add(new Loan(12, b11, r12, LocalDate.of(2024, 11,  1), LocalDate.of(2024, 11, 20)));
+        loansRepo.add(new Loan(13, b12, r13, LocalDate.of(2024, 12,  5)));
+        loansRepo.add(new Loan(14, b13, r14, LocalDate.of(2025, 1, 10), LocalDate.of(2025, 1, 25)));
+        loansRepo.add(new Loan(15, b14, r15, LocalDate.of(2025, 2,  1)));
     }
 
     @Override
-    public Collection<Loan> getLoans() {
-        return loansRepo;
+    public Collection<Loan> getLoans(int page, int size) {
+        int fromIndex = page * size;
+        if (fromIndex >= loansRepo.size()) return new ArrayList<>();
+        int toIndex = Math.min(fromIndex + size, loansRepo.size());
+        return loansRepo.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public int getLoansCount() {
+        return loansRepo.size();
     }
 
     @Override

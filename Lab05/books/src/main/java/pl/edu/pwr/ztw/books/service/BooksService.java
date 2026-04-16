@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Service
 public class BooksService implements IBooksService {
     private static List<Book> booksRepo = new ArrayList<>();
-    private static int nextId = 4;
+    private static int nextId = 16;
 
     @Autowired
     private IAuthorsService authorsService;
@@ -25,8 +25,16 @@ public class BooksService implements IBooksService {
     }
 
     @Override
-    public Collection<Book> getBooks() { 
-        return booksRepo; 
+    public Collection<Book> getBooks(int page, int size) {
+        int fromIndex = page * size;
+        if (fromIndex >= booksRepo.size()) return new ArrayList<>();
+        int toIndex = Math.min(fromIndex + size, booksRepo.size());
+        return booksRepo.subList(fromIndex, toIndex);
+    }
+
+    @Override
+    public int getBooksCount() {
+        return booksRepo.size();
     }
 
     @Override
@@ -88,14 +96,33 @@ public class BooksService implements IBooksService {
     }
 
     public void initializeBooks() {
-        Author author1 = authorsService.getAuthor(1);
-        Author author2 = authorsService.getAuthor(2);
-        Author author3 = authorsService.getAuthor(3);
-        
-        if (author1 != null && author2 != null && author3 != null) {
-            booksRepo.add(new Book(1, "Potop", author1, 936));
-            booksRepo.add(new Book(2, "Wesele", author2, 150));
-            booksRepo.add(new Book(3, "Dziady", author3, 292));
-        }
+        Author a1  = authorsService.getAuthor(1);
+        Author a2  = authorsService.getAuthor(2);
+        Author a3  = authorsService.getAuthor(3);
+        Author a4  = authorsService.getAuthor(4);
+        Author a5  = authorsService.getAuthor(5);
+        Author a6  = authorsService.getAuthor(6);
+        Author a7  = authorsService.getAuthor(7);
+        Author a8  = authorsService.getAuthor(8);
+        Author a10 = authorsService.getAuthor(10);
+        Author a13 = authorsService.getAuthor(13);
+        Author a14 = authorsService.getAuthor(14);
+        Author a15 = authorsService.getAuthor(15);
+
+        booksRepo.add(new Book(1,  "Potop",                    a1,  936));
+        booksRepo.add(new Book(2,  "Wesele",                   a2,  150));
+        booksRepo.add(new Book(3,  "Dziady",                   a3,  292));
+        booksRepo.add(new Book(4,  "Lalka",                    a4,  823));
+        booksRepo.add(new Book(5,  "Kordian",                  a5,  180));
+        booksRepo.add(new Book(6,  "Nad Niemnem",              a6,  542));
+        booksRepo.add(new Book(7,  "Ludzie bezdomni",          a7,  450));
+        booksRepo.add(new Book(8,  "Stara baśń",               a8,  380));
+        booksRepo.add(new Book(9,  "Pan Tadeusz",              a3,  430));
+        booksRepo.add(new Book(10, "Krzyżacy",                 a1,  654));
+        booksRepo.add(new Book(11, "Chłopi",                   a2,  680));
+        booksRepo.add(new Book(12, "Solaris",                  a14, 204));
+        booksRepo.add(new Book(13, "Bieguni",                  a15, 430));
+        booksRepo.add(new Book(14, "Mąż i żona",               a10, 120));
+        booksRepo.add(new Book(15, "Tango",                    a13,  95));
     }
 }

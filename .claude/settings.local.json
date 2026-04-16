@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"c:/Users/matj/OneDrive/Dokumenty/Studia/Zadania/Semestr 6/Zaawansowane technologie webowe/studies-advanced-web-technologies/Lab05/books/src/main/java\" -type f -name \"*.java\" -exec basename {} \\\\;)",
+      "Bash(find \"c:/Users/matj/OneDrive/Dokumenty/Studia/Zadania/Semestr 6/Zaawansowane technologie webowe/studies-advanced-web-technologies/Lab05/books\" -type f \\\\\\( -name \"*.properties\" -o -name \"*.yml\" -o -name \"*.yaml\" \\\\\\) -exec grep -l \"server\\\\|cors\\\\|port\" {} \\\\;)"
+    ]
+  }
+}

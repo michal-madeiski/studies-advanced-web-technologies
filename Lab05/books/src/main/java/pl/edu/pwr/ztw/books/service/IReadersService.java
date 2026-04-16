@@ -4,7 +4,8 @@ import pl.edu.pwr.ztw.books.model.Reader;
 import java.util.Collection;
 
 public interface IReadersService {
-    Collection<Reader> getReaders();
+    Collection<Reader> getReaders(int page, int size);
+    int getReadersCount();
     Reader getReader(int id);
     Reader createReader(String name, String email);
     Reader updateReader(int id, String name, String email);

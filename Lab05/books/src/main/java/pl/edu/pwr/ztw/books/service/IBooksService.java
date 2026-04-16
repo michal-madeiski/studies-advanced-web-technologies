@@ -4,7 +4,8 @@ import pl.edu.pwr.ztw.books.model.Book;
 import java.util.Collection;
 
 public interface IBooksService {
-    Collection<Book> getBooks();
+    Collection<Book> getBooks(int page, int size);
+    int getBooksCount();
     Book getBook(int id);
     Collection<Book> getBooksByAuthor(int authorId);
     Book createBook(String title, int authorId, int pages);
