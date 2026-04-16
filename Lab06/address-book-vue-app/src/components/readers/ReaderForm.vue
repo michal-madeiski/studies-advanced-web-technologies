@@ -5,15 +5,29 @@
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
         <label>Imię i nazwisko</label>
-        <input v-model="form.name" type="text" placeholder="np. Jan Kowalski" />
+        <input
+          v-model="form.name"
+          type="text"
+          placeholder="np. Jan Kowalski"
+          :class="{ 'has-error': submitting && invalidName }"
+          @focus="clearStatus"
+          @keypress="clearStatus"
+        />
       </div>
 
       <div class="form-group">
         <label>Email</label>
-        <input v-model="form.email" type="email" placeholder="np. jan@mail.com" />
+        <input
+          v-model="form.email"
+          type="text"
+          placeholder="np. jan@mail.com"
+          :class="{ 'has-error': submitting && invalidEmail }"
+          @focus="clearStatus"
+          @keypress="clearStatus"
+        />
       </div>
 
-      <p v-if="error" class="error-message">{{ error }}</p>
+      <p v-if="error && submitting" class="error-message">Proszę wypełnić wskazane pola formularza</p>
 
       <div class="actions" style="margin-top: 16px">
         <button type="submit" class="btn-primary">{{ reader ? 'Zapisz' : 'Dodaj' }}</button>
@@ -36,17 +50,35 @@ export default {
         name: this.reader?.name || '',
         email: this.reader?.email || ''
       },
-      error: ''
+      submitting: false,
+      error: false
+    }
+  },
+  computed: {
+    invalidName()  { return !this.form.name },
+    invalidEmail() { return !this.form.email }
+  },
+  watch: {
+    reader(newReader) {
+      this.form.name  = newReader?.name  || ''
+      this.form.email = newReader?.email || ''
+      this.submitting = false
+      this.error = false
     }
   },
   methods: {
     handleSubmit() {
-      if (!this.form.name || !this.form.email) {
-        this.error = 'Proszę wypełnić wszystkie pola.'
+      this.submitting = true
+      if (this.invalidName || this.invalidEmail) {
+        this.error = true
         return
       }
-      this.error = ''
+      this.error = false
       this.$emit('save', { name: this.form.name, email: this.form.email })
+    },
+    clearStatus() {
+      this.submitting = false
+      this.error = false
     }
   }
 }

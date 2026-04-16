@@ -34,7 +34,34 @@ button {
   padding: 6px 14px;
   border-radius: 4px;
   border: none;
+  margin: 0;
   font-size: 14px;
+  outline: none;
+  line-height: 1.4;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: none;
+}
+
+button:hover {
+  opacity: 0.85;
+  border: none;
+}
+
+button:focus,
+button:active {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  opacity: 0.35;
 }
 
 button.btn-primary {
@@ -93,6 +120,11 @@ input:focus, select:focus {
   border-color: #2563eb;
 }
 
+input.has-error, select.has-error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
 label {
   display: block;
   font-size: 13px;
@@ -136,6 +168,7 @@ label {
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   margin-bottom: 24px;
+  overflow-x: auto;
 }
 
 .actions {

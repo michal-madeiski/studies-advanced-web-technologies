@@ -5,7 +5,11 @@
     <form @submit.prevent="handleSubmit">
       <div class="form-group">
         <label>Książka</label>
-        <select v-model="form.bookId">
+        <select
+          v-model="form.bookId"
+          :class="{ 'has-error': submitting && invalidBook }"
+          @focus="clearStatus"
+        >
           <option value="" disabled>-- Wybierz książkę --</option>
           <option v-for="book in books" :key="book.id" :value="book.id">
             {{ book.title }} ({{ book.author?.name }})
@@ -15,7 +19,11 @@
 
       <div class="form-group">
         <label>Czytelnik</label>
-        <select v-model="form.readerId">
+        <select
+          v-model="form.readerId"
+          :class="{ 'has-error': submitting && invalidReader }"
+          @focus="clearStatus"
+        >
           <option value="" disabled>-- Wybierz czytelnika --</option>
           <option v-for="reader in readers" :key="reader.id" :value="reader.id">
             {{ reader.name }}
@@ -23,7 +31,7 @@
         </select>
       </div>
 
-      <p v-if="error" class="error-message">{{ error }}</p>
+      <p v-if="error && submitting" class="error-message">Proszę wypełnić wskazane pola formularza</p>
 
       <div class="actions" style="margin-top: 16px">
         <button type="submit" class="btn-primary">Dodaj</button>
@@ -44,20 +52,30 @@ export default {
   data() {
     return {
       form: { bookId: '', readerId: '' },
-      error: ''
+      submitting: false,
+      error: false
     }
+  },
+  computed: {
+    invalidBook()   { return !this.form.bookId },
+    invalidReader() { return !this.form.readerId }
   },
   methods: {
     handleSubmit() {
-      if (!this.form.bookId || !this.form.readerId) {
-        this.error = 'Proszę wybrać książkę i czytelnika.'
+      this.submitting = true
+      if (this.invalidBook || this.invalidReader) {
+        this.error = true
         return
       }
-      this.error = ''
+      this.error = false
       this.$emit('save', {
         book: { id: this.form.bookId },
         reader: { id: this.form.readerId }
       })
+    },
+    clearStatus() {
+      this.submitting = false
+      this.error = false
     }
   }
 }

@@ -2,12 +2,19 @@
   <div class="layout">
     <nav class="navbar">
       <div class="navbar-brand">Biblioteka</div>
-      <div class="navbar-links">
-        <router-link to="/">Strona główna</router-link>
-        <router-link to="/books">Książki</router-link>
-        <router-link to="/authors">Autorzy</router-link>
-        <router-link to="/readers">Czytelnicy</router-link>
-        <router-link to="/loans">Wypożyczenia</router-link>
+
+      <button class="hamburger" @click="menuOpen = !menuOpen" aria-label="Menu">
+        <span :class="{ open: menuOpen }"></span>
+        <span :class="{ open: menuOpen }"></span>
+        <span :class="{ open: menuOpen }"></span>
+      </button>
+
+      <div class="navbar-links" :class="{ 'menu-open': menuOpen }">
+        <router-link to="/" @click="menuOpen = false">Strona główna</router-link>
+        <router-link to="/books" @click="menuOpen = false">Książki</router-link>
+        <router-link to="/authors" @click="menuOpen = false">Autorzy</router-link>
+        <router-link to="/readers" @click="menuOpen = false">Czytelnicy</router-link>
+        <router-link to="/loans" @click="menuOpen = false">Wypożyczenia</router-link>
       </div>
     </nav>
 
@@ -16,14 +23,19 @@
     </main>
 
     <footer class="footer">
-      <span>Biblioteka &copy; 2024</span>
+      <span>Biblioteka &copy; Mateusz Janiszewski, Michał Madeiski 2026</span>
     </footer>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'DefaultLayout'
+  name: 'DefaultLayout',
+  data() {
+    return {
+      menuOpen: false
+    }
+  }
 }
 </script>
 
@@ -42,7 +54,8 @@ export default {
   color: #fff;
   padding: 0 32px;
   height: 56px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: relative;
 }
 
 .navbar-brand {
@@ -66,14 +79,51 @@ export default {
 }
 
 .navbar-links a:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
 .navbar-links a.router-link-active {
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
   font-weight: 600;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #cbd5e1;
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+  transform-origin: center;
+}
+
+/* Animacja X */
+.hamburger span:nth-child(1).open {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger span:nth-child(2).open {
+  opacity: 0;
+}
+
+.hamburger span:nth-child(3).open {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .main-content {
@@ -90,5 +140,39 @@ export default {
   text-align: center;
   padding: 14px;
   font-size: 13px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px 0 4px;
+    gap: 2px;
+  }
+
+  .navbar-links.menu-open {
+    display: flex;
+  }
+
+  .navbar-links a {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  .main-content {
+    padding: 20px 16px;
+  }
 }
 </style>
