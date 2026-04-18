@@ -1,0 +1,10 @@
+query {
+  todo(id: 5) {
+    title
+    completed
+    user {
+      name
+      email
+    }
+  }
+}

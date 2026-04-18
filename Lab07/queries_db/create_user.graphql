@@ -1,0 +1,8 @@
+mutation {
+  addUser(name: "Kamil Testowy", email: "kamil@test.pl", login: "k.testowy") {
+    id
+    name
+    email
+    login
+  }
+}

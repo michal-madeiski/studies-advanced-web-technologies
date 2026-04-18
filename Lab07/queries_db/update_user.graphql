@@ -1,0 +1,8 @@
+mutation {
+  updateUser(id: 4, name: "Kamil Zaktualizowany", login: "kamil.nowy") {
+    id
+    name
+    email
+    login
+  }
+}

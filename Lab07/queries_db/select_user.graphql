@@ -1,0 +1,12 @@
+query {
+  user(id: 4) {
+    id
+    name
+    email
+    login
+    todos {
+      title
+      completed
+    }
+  }
+}
